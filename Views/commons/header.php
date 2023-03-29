@@ -55,6 +55,7 @@
 </head>
 
     <style>
+        
         .error
         {
             color: rgb(243, 41 ,41);
@@ -65,7 +66,7 @@
         }
         
 
-        #icone-mdp-connexion, #icone-pwd, #icone-cpwd{
+        #icone-mdp-connexion, #icone-pwd, #icone-cpwd, #icone-apwd{
             display: inline;
             font-size: 21px;
             position: absolute;
@@ -75,17 +76,6 @@
             right: 15px;
             cursor: pointer;
         }
-
-        /* #icone-mdp-connexion, #icone-pwd, #icone-cpwd{
-            font-size: 21px;
-            position: absolute;
-            top : 50%;
-            left: 50%;
-            cursor: pointer;
-            margin: -50px -100px;
-        } */
-
-
     </style>
 
 <body>
@@ -102,7 +92,7 @@
         <div class="container-fluid nav-bar bg-transparent">
             <nav class="navbar navbar-expand-lg bg-white navbar-light py-0 px-4">
                 <a href="<?php echo $GLOBALS['__HOST__']?>" class="navbar-brand d-flex align-items-center text-center">
-                    <h1 class="m-0 text-primary">Leboncoin</h1>
+                    <h1 class="m-0 text-primary">e-coin</h1>
                 </a>
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
@@ -138,7 +128,7 @@
                             <a href="<?php echo $GLOBALS['__HOST__']?>connexion" class="nav-link"><i class="fa fa-user text-primary me-1"></i> Se connecter</a>
                         <?php } ?>
                     </div>
-                    <a href="<?php echo $GLOBALS['__HOST__']?><?= (isset($_SESSION)) && ($_SESSION != NULL) ? 'deposer-une-annonce' : 'connexion' ?>" class="btn btn-primary px-3 d-none d-lg-flex"><i style="margin-top:2%" class="fa fa-plus me-1"></i> Déposer une annonce</a>
+                    <a href="<?php echo $GLOBALS['__HOST__']?><?= (isset($_SESSION["idU"])) && ($_SESSION != NULL) ? 'deposer-une-annonce' : 'connexion' ?>" class="btn btn-primary px-3 d-none d-lg-flex"><i style="margin-top:2%" class="fa fa-plus me-1"></i> Déposer une annonce</a>
                 </div>
             </nav>
         </div>

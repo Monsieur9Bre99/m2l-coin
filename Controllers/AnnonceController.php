@@ -190,6 +190,60 @@
                 exit();
             }
         } 
+
+        public function deleteAnnonce($lid)
+        {
+            if (is_numeric($lid)) 
+            {
+                $vraiId = $lid / 3298;
+
+                if ($vraiId == 0) 
+                {
+                    $_SESSION["message"] = "Impossible de supprimer une annonce qui n'existe pas !! ";
+                    $_SESSION["status"] = "danger";
+                    $_SESSION["icone"] = "fa-exclamation-circle";
+                    header(sprintf("Location: %s%s",$GLOBALS['__HOST__'], "mes-annonces"));
+                    exit();
+                } 
+                else if(!is_int($vraiId))
+                {
+                    $_SESSION["message"] = "Impossible de supprimer une annonce qui n'existe pas !! ";
+                    $_SESSION["status"] = "danger";
+                    $_SESSION["icone"] = "fa-exclamation-circle";
+                    header(sprintf("Location: %s%s",$GLOBALS['__HOST__'], "mes-annonces"));
+                    exit();
+                }
+                else
+                {
+                    $model = new Model();
+                    $result = $model->deleteAnn($vraiId);
+                    if ($result) 
+                    {
+                        $_SESSION["message"] = "Annonce supprimée avec succès !!";
+                        $_SESSION["status"] = "success";
+                        $_SESSION["icone"] = "fa-check-circle";
+                        header(sprintf("Location: %s%s",$GLOBALS['__HOST__'], "mes-annonces"));
+                        exit();
+                    } 
+                    else 
+                    {
+                        $_SESSION["message"] = "Cette annonce n'existe pas !! ";
+                        $_SESSION["status"] = "danger";
+                        $_SESSION["icone"] = "fa-exclamation-circle";
+                        header(sprintf("Location: %s%s",$GLOBALS['__HOST__'], "mes-annonces"));
+                        exit();
+                    }    
+                }
+            }
+            else
+            {
+                $_SESSION["message"] = "Impossible de supprimer une annonce qui n'existe pas !! ";
+                $_SESSION["status"] = "danger";
+                $_SESSION["icone"] = "fa-exclamation-circle";
+                header(sprintf("Location: %s%s",$GLOBALS['__HOST__'], "mes-annonces"));
+                exit();
+            }
+        }
         
 
         public function getUserAnnonces()

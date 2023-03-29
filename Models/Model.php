@@ -1,7 +1,8 @@
 <?php
 
 
-    class Model{
+    class Model
+    {
 
         private $connection = NULL; // Ce champ la servira pour savoir si nous avons pu se connecter sur la base de données ou pas...
         private $DSN = "mysql:host=localhost;dbname=leboncoin";
@@ -42,6 +43,26 @@
                 return NULL;
             }
         }
+
+        //Récupérer un utilisateur donné
+        public function getAuser($idUtilisateur)
+        {
+            // J'ouvre la connexion vers ma base de données...
+            $this->connectToBDD();
+            if($this->connection != NULL){
+                // Connexion vers la base de données OK !
+                $queryString = "SELECT * FROM `users` WHERE idU = ?";
+                $queryPrepared = $this->connection->prepare($queryString, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+                $queryPrepared->execute(array($idUtilisateur));
+                $resultSet = $queryPrepared->fetch(PDO::FETCH_ASSOC);
+                if(!empty($resultSet))
+                {
+                    return $resultSet;
+                }
+                return NULL;
+            }
+        }
+
         // Récupérer toutes les catégories depuis la base de données...
         public function getAllCategories(){
             // J'ouvre la connexion vers ma base de données...
@@ -152,6 +173,69 @@
             }
         }
 
+        //Vérification de la conformité de l'ancien mot de passe
+        public function checkOldMdp($idUtilisateur) 
+        {
+            // J'ouvre la connexion vers ma base de données...
+            $this->connectToBDD();
+            if($this->connection != NULL)
+            {
+                
+                $queryString = "SELECT mdp FROM users WHERE idU = ?";
+                $queryPrepared = $this->connection->prepare($queryString, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+                $queryPrepared->execute(array($idUtilisateur));
+                $resultSet = $queryPrepared->fetch(PDO::FETCH_ASSOC);
+                
+                if(!$resultSet)
+                {
+                    return FALSE;
+                }
+                return $resultSet;
+            }
+        }
+
+        public function updateMdp($motDePasse, $idUtilisateur) 
+        {
+            // J'ouvre la connexion vers ma base de données...
+            $this->connectToBDD();
+            if($this->connection != NULL)
+            {
+                
+                $queryString = "UPDATE `users` SET mdp = :motDp WHERE idU = :id";
+                $queryPrepared = $this->connection->prepare($queryString, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+                $resultSet = $queryPrepared->execute(["motDp"=>$motDePasse, "id"=>$idUtilisateur]);
+                
+                if(!$resultSet)
+                {
+                    return FALSE;
+                }
+                return TRUE;
+            }
+        }
+
+        public function updateUserInfos($array) 
+        {
+            // J'ouvre la connexion vers ma base de données...
+            $this->connectToBDD();
+            if($this->connection != NULL)
+            {
+                
+                $queryString = "UPDATE `users` SET  nom = ?,
+                                                    prenom = ?,
+                                                    adresseEmail = ?,
+                                                    telephone = ?  WHERE idU = ?";
+                $queryPrepared = $this->connection->prepare($queryString, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+                $resultSet = $queryPrepared->execute($array);
+                
+                if(!$resultSet)
+                {
+                    return FALSE;
+                }
+                return TRUE;
+            }
+        }
+
+
         // Connection sur L'application
         public function getUserAnnonces($userID){
             // J'ouvre la connexion vers ma base de données...
@@ -190,6 +274,25 @@
                     return $resultSet;
                 }
                 return NULL;
+            }
+        }
+
+        public function deleteAnn($lid)
+        {
+            // J'ouvre la connexion vers ma base de données...
+            $this->connectToBDD();
+            if($this->connection != NULL)
+            {
+                // Connexion vers la base de données OK !
+                $queryString = "DELETE FROM `annonce` WHERE idAnnonce = ?";
+                $queryPrepared = $this->connection->prepare($queryString, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+                $resultSet = $queryPrepared->execute(array($lid));
+               
+                if(!($resultSet))
+                {
+                    return FALSE;
+                }
+                return TRUE;
             }
         }
 

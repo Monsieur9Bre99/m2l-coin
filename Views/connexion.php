@@ -5,13 +5,13 @@
         <div class="container">
             <?php if((isset($_SESSION["message"]) && ($_SESSION["message"] != NULL))){ ?>
                 <div class="d-flex justify-content-center">
-                    <div class="mx-auto d-inline-flex align-items-center mb-5 col-md-5  alert alert-<?= $_SESSION["status"] ?>" role="alert">
+                    <div class="mx-auto d-inline-flex align-items-center mb-5 col-md-5  alert alert-<?= $_SESSION["status"] ?> text-center" role="alert">
                         <i class="fa <?= $_SESSION["icone"]?> fa-2x me-3" aria-hidden="true"></i>
                         <strong><?= $_SESSION["message"] ?></strong> 
                     </div>
                 </div>
                 
-            <?php session_destroy(); }?>
+            <?php unset($_SESSION["icone"]); unset($_SESSION["status"]); unset($_SESSION["message"]); }?>
 
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
                 <h1 class="mb-1 mt-3">Bonjour !!</h1>

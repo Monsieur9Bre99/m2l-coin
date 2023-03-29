@@ -10,7 +10,7 @@
                         <strong><?= $_SESSION["message"] ?></strong> 
                     </div>
                 </div>    
-            <?php session_destroy(); }?>
+            <?php unset($_SESSION["icone"]); unset($_SESSION["status"]); unset($_SESSION["message"]); }?>
 
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
                 <h1 class="mb-3">Bonjour !!</h1>

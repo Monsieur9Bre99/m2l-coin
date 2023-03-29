@@ -1,7 +1,7 @@
 <?php
 
     include(__DIR__."\\Controllers\\LandingController.php");
-    include(__DIR__."\\Controllers\\LoginController.php");
+    include(__DIR__."\\Controllers\\AccountController.php");
     include(__DIR__."\\Controllers\\AnnonceController.php");
     include(__DIR__."\\Controllers\\SearchController.php");
     include(__DIR__."\\Controllers\\UpdateController.php");
@@ -15,7 +15,8 @@
         }
         
         // webApplication Launcher...
-        public static function main(){
+        public static function main()
+        {
             // Config pour Assets...
             $GLOBALS['__HOST__'] = "http://127.0.0.1/projetLeboncoin/";
             $GLOBALS['WINDOW_TITLE'] = "Bienvenue sur le site leboncoin de petites annonces";
@@ -31,25 +32,39 @@
              
                 switch(strtolower($root)){
                     case "inscription-form":// TODO: First Example
-                        $controller = new LoginController("inscription");
+                        $controller = new AccountController("inscription");
                         break;
 
                     case "inscription":// TODO: First Example
-                        $controller = new LoginController();
+                        $controller = new AccountController();
                         $controller->inscriptionUser();
                         break;
 
+                    case "mon-profil":
+                        $controller = new AccountController("mon-profil");
+                        break; 
+
+                    case "update-infos":// TODO: First Example
+                        $controller = new AccountController();
+                        $controller->updateUser();
+                        break;
+
+                    case "update-mdp":// TODO: First Example
+                        $controller = new AccountController();
+                        $controller->updateMdp();
+                            break;
+
                     case "connexion":// TODO: First Example
-                        $controller = new LoginController("connexion");
+                        $controller = new AccountController("connexion");
                         break;
                     
                     case "check-connection":
-                        $controller = new LoginController(); // je ne charge pas la vue par contre j'execute la fonction en dessous...
+                        $controller = new AccountController(); // je ne charge pas la vue par contre j'execute la fonction en dessous...
                         $controller->checkConnection();
                         break;
 
                     case "deconnexion": // TODO:
-                        $controller = new LoginController(); // je ne charge pas la vue par contre j'execute la fonction en dessous...
+                        $controller = new AccountController(); // je ne charge pas la vue par contre j'execute la fonction en dessous...
                         $controller->killSession();
                         break;
 
@@ -60,6 +75,14 @@
                     case "nouvelle-annonce": // TODO:
                         $controller = new AnnonceController();
                         $controller->nouvelleAnnonce();
+                        break;
+
+                    case preg_match('/delete-annonce.*/', strtolower($root)) ? true : false: // TODO:
+                        $urlSplited = explode('/', $_SERVER['REQUEST_URI']) ; //On divise le chemin selon le critère "/"
+                        $lid = $urlSplited[(count($urlSplited) -1)]; // On accède ensuite à l'id de l'annonce
+                        $GLOBALS["lid"] = (int)$lid;
+                        $controller = new AnnonceController();
+                        $controller->deleteAnnonce($GLOBALS["lid"]);
                         break;
 
                     case preg_match('/modifier-annonce.*/', strtolower($root)) ? true : false: // TODO:
@@ -74,11 +97,6 @@
                         {
                             $controller = new UpdateController("update");
                         }
-                        
-                        break;
-
-                    case "supprimer-une-annonce":
-                        echo "Supprimer une annonce";
                         break;
 
                     case "mes-annonces":
@@ -91,9 +109,8 @@
                         $controller->mesFavoris();
                         break;
 
-                    case "account":
-                        $controller = new LoginController("account");
-                        break;
+                    
+
                     case preg_match('/search?.*/', strtolower($root)) ? true : false: // TODO:
                         $controller = new SearchController();
                         $controller->getResultSearch();

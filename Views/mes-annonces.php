@@ -1,7 +1,18 @@
- 
+<?php if(isset($_SESSION["idU"])  && ($_SESSION["idU"] != NULL)) { ?>
+
  <!-- Property List Start -->
     <div class="container-xxl py-5">
             <div class="container">
+            <?php if((isset($_SESSION["message"]) && ($_SESSION["message"] != NULL))){ ?>
+                <div class="d-flex justify-content-center">
+                    <div class="mx-auto d-inline-flex align-items-center mb-5 col-md-5  alert alert-<?= $_SESSION["status"] ?> text-center" role="alert">
+                        <i class="fa <?= $_SESSION["icone"]?> fa-2x me-3" aria-hidden="true"></i>
+                        <strong><?= $_SESSION["message"] ?></strong> 
+                    </div>
+                </div>
+                
+            <?php unset($_SESSION["icone"]); unset($_SESSION["status"]); unset($_SESSION["message"]); }?>
+            
             <?php if(($GLOBALS["userAnnonces"]) == NULL ){ ?> 
                     <div class="d-flex justify-content-center">
                         <div class="mx-auto d-inline-flex align-items-center mb-5 col-md-5  alert alert-danger"] >
@@ -37,7 +48,7 @@
                                         <small class="flex-fill text-center border-end py-2"><i class="fa fa-calendar text-primary me-2"></i><?php echo sprintf("Ajouté le %s", date_format(date_create($annonce['dateAjout']), "d/m/Y à H:i")); ?></small>
                                         <!--<small class="flex-fill text-center border-end py-2"><a href="<?php echo $GLOBALS['__HOST__']?>add-to-favoris/<?php echo $annonce['idAnnonce']; ?>"><i class="fa fa-heart text-primary me-2"></i></a></small>-->
                                         <small class="flex-fill text-center border-end py-2"><a style="color: blue;" href="<?php echo $GLOBALS['__HOST__']?>update-annonce/<?php echo $annonce['idAnnonce']; ?>"><i class="fa fa-cog me-1" style="color: blue;"></i> Modif.</a></small>
-                                        <small class="flex-fill text-center py-2"><a style="color: red;" href="<?php echo $GLOBALS['__HOST__']?>delete-annonce/<?php echo $annonce['idAnnonce']; ?>"><i class="fa fa-trash  me-1" style="color: red;"></i> Suppr.</a></small>
+                                        <small class="flex-fill text-center py-2"><a style="color: red;" href="<?php echo $GLOBALS['__HOST__']?>delete-annonce/<?= ($annonce['idAnnonce'] * 3298); ?>" onclick='return confirm("Vous êtes sur de vouloir supprimer cette annonce ?")'><i class="fa fa-trash  me-1" style="color: red;"></i> Suppr.</a></small>
                                     </div>
                                 </div>
                             </div>
@@ -51,3 +62,14 @@
         <!-- Property List End -->
 
     <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+
+<?php 
+    }
+    else 
+    {
+        $_SESSION["message"] = "Veuillez vous connecter pour accéder à votre compte.";
+        $_SESSION["status"] = "dark";
+        $_SESSION["icone"] = "fa-check-circle"; ?>
+        <script>window.location.replace("http://127.0.0.1/projetLeboncoin/connexion")</script>
+    <?php } 
+?>

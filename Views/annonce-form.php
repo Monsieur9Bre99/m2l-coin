@@ -1,4 +1,7 @@
-<div class="container-xxl py-5">
+<?php if(isset($_SESSION["idU"])  && ($_SESSION["idU"] != NULL)) { ?>
+    
+    
+    <div class="container-xxl py-5">
             <div class="container">
             <?php if((isset($_SESSION["message"]) && ($_SESSION["message"] != NULL))){ ?>
                 <div class="d-flex justify-content-center">
@@ -8,7 +11,7 @@
                     </div>
                 </div>
                 
-            <?php session_destroy(); }?>
+            <?php unset($_SESSION["icone"]); unset($_SESSION["status"]); unset($_SESSION["message"]); }?>
 
                 <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
                     <h1 class="mb-3">Nouvelle Annonce</h1> 
@@ -222,3 +225,14 @@
         })
 
     </script>
+
+<?php 
+        }
+        else 
+        {
+            $_SESSION["message"] = "Veuillez vous connecter pour accéder à votre compte.";
+            $_SESSION["status"] = "dark";
+            $_SESSION["icone"] = "fa-check-circle"; ?>
+            <script>window.location.replace("http://127.0.0.1/projetLeboncoin/connexion")</script>
+        <?php } 
+    ?>

@@ -1,37 +1,16 @@
-<!-- <style>
-    .bt
-    {
-        border: 1px solid ;
-        width: 100%;
-        margin-top: 10px;
-    }
 
-    .cont
-    {
-        width: 40%;
-        display: flex;
-        flex-direction: column;
-        margin:auto
-    }
-    
-</style>
-<div class="cont">
-    <button class="">A</button>
-    <button class="bt">B</button>
-    <button class="bt">C</button>
-</div> -->
         <!-- Header Start -->
         <div class="container-xxl py-5">
             <div class="container">
                 <?php if((isset($_SESSION) && ($_SESSION != NULL))){ ?>
                     <div class="d-flex justify-content-center">
-                        <div class="mx-auto d-inline-flex align-items-center mb-5 col-md-7  alert alert-<?= $_SESSION["status"] ?>" role="alert">
+                        <div class="mx-auto d-inline-flex align-items-center mb-5 col-md-7  alert alert-<?= $_SESSION["status"] ?> text-center" role="alert">
                             <i class="fa <?=$_SESSION["icone"]  ?> fa-2x me-3" aria-hidden="true"></i>
                             <strong><?= $_SESSION["message"]?></strong> 
                         </div>
                     </div>
                     
-                <?php }?>
+                <?php unset($_SESSION["icone"]); unset($_SESSION["status"]); unset($_SESSION["message"]); }?>
                 <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 800px;">
                     <h1 class="mb-2">Des millions de petites annonces et autant d’occasions de se faire plaisir !!</h1>
                 </div>

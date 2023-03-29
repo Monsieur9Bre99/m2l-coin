@@ -1,3 +1,4 @@
+<?php if(isset($_SESSION["idU"])  && ($_SESSION["idU"] != NULL)) { ?>
  <!-- Property List Start -->
  <div class="container-xxl py-5">
             <div class="container">
@@ -51,3 +52,14 @@
         <!-- Property List End -->
 
     <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+
+    <?php 
+        }
+        else 
+        {
+            $_SESSION["message"] = "Veuillez vous connecter pour accéder à votre compte.";
+            $_SESSION["status"] = "dark";
+            $_SESSION["icone"] = "fa-check-circle"; ?>
+            <script>window.location.replace("http://127.0.0.1/projetLeboncoin/connexion")</script>
+        <?php } 
+    ?>
