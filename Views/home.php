@@ -2,7 +2,7 @@
         <!-- Header Start -->
         <div class="container-xxl py-5">
             <div class="container">
-                <?php if((isset($_SESSION) && ($_SESSION != NULL))){ ?>
+                <?php if((isset($_SESSION["message"]) && ($_SESSION != NULL))){ ?>
                     <div class="d-flex justify-content-center">
                         <div class="mx-auto d-inline-flex align-items-center mb-5 col-md-7  alert alert-<?= $_SESSION["status"] ?> text-center" role="alert">
                             <i class="fa <?=$_SESSION["icone"]  ?> fa-2x me-3" aria-hidden="true"></i>
@@ -75,14 +75,14 @@
                             <?php foreach ($GLOBALS["lesAnnonces"] as $annonce) { ?>
                                 <div class="col-md-4 mt-4">
                                 <div class="card">
-                                    <img style="max-height: 200px; min-height: 200px" src="<?php echo sprintf("%sTemplate/real-estate-html-template/%s", $GLOBALS['__HOST__'], $annonce['photo']) ?>" class="card-img-top" alt="...">
+                                    <img style="max-height: 200px; min-height: 200px" src="<?php echo sprintf("%sAssets/%s", $GLOBALS['__HOST__'], $annonce['photo']) ?>" class="card-img-top" alt="...">
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between align-items-start">
                                             <div style="height: fit-content; width: fit-content; max-width: 60%"><h5 class="card-title"><?= $annonce['titre'] ?></h5></div>
-                                            <div style="height: fit-content; width: fit-content"><span class='badge' style="display: inline-block; margin: auto; height:fit-content; width:fit-content; text-align:center; padding: 5px 10px"><b style="font-size: 1.2rem;">25 €</b> </span></div>
+                                            <div style="height: fit-content; width: fit-content"><span class='badge' style="display: inline-block; margin: auto; height:fit-content; width:fit-content; text-align:center; padding: 5px 10px"><b style="font-size: 1.2rem;"><?= $annonce["prix"] ?> €</b> </span></div>
                                         </div>
                                         <p class="card-text"><?= $annonce["description"] ?></p>
-                                        <a href="#" class="btn btn-primary">Détails</a>
+                                        <a href="<?php echo sprintf("%s%s/%s", $GLOBALS['__HOST__'], "detail", ($annonce["idAnnonce"]) * 6895) ?>" class="btn btn-primary">Détails</a>
                                     </div>
                                 </div>
                             </div>

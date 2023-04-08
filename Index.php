@@ -88,16 +88,31 @@
                     case preg_match('/modifier-annonce.*/', strtolower($root)) ? true : false: // TODO:
                         $urlSplited = explode('/', $_SERVER['REQUEST_URI']) ; //On divise le chemin selon le critère "/"
                         $a = $urlSplited[(count($urlSplited) -1)]; // On accède ensuite à l'id de l'annonce
-                        $GLOBALS['id'] = (int)$a;
-                        if ($GLOBALS['id'] == 0) 
-                        {
-                            echo"Id non reconnu !!";
-                        }
-                        else
-                        {
-                            $controller = new UpdateController("update");
-                        }
+                        $GLOBALS['lid'] = (int)$a;
+                        
+                        $controller = new AnnonceController();
+                        $controller->recupAnnonce($GLOBALS["lid"]);
                         break;
+
+                    case "valider-modif-image-annonce":// TODO:
+                        $controller = new AnnonceController();
+                        $controller->validateModifImg();
+                        break;   
+                        
+                    case "valider-modif-infos-annonce":// TODO:
+                        $controller = new AnnonceController();
+                        $controller->modifAnnonce();
+                        break; 
+
+                    
+                    case preg_match('/detail.*/', strtolower($root)) ? true : false:// TODO:
+                        $urlSplited = explode('/', $_SERVER['REQUEST_URI']) ; //On divise le chemin selon le critère "/"
+                        $a = $urlSplited[(count($urlSplited) -1)]; // On accède ensuite à l'id de l'annonce
+                        $GLOBALS['lid'] = (int)$a;
+
+                        $controller = new AnnonceController();
+                        $controller->detailAnnonce($GLOBALS["lid"]);
+                        break;        
 
                     case "mes-annonces":
                         $controller = new AnnonceController();

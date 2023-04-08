@@ -36,7 +36,7 @@
             if (isset($_SESSION["idU"]) && ($_SESSION["idU"] != NULL)) 
             {
                 $model = new Model();
-                $result = $model->getAuser($_SESSION["idU"]);
+                $result = $model->getUserById($_SESSION["idU"]);
                 return $result;
             }
         }
@@ -241,6 +241,12 @@
                 
                                 if($user)
                                 {
+                                    $val = $model->getUserById($_SESSION["idU"]);
+                                    foreach($val as $key => $value)
+                                    {
+                                        $_SESSION[$key] = $value;
+                                    }
+                                    
                                     $_SESSION["message"] = "Vos informations ont été modifiées avec succès !";
                                     $_SESSION["status"] = "success";
                                     $_SESSION["icone"] = "fa-check-circle";

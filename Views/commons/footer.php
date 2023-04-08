@@ -5,7 +5,7 @@
                 <div class="copyright">
                     <div class="row align-items-center">
                         <div class="col-md-3 text-center text-md-start mb-3 mb-md-0">
-                            &copy; <a class="border-bottom" href="#">Leboncoin</a> Tous droits réservés. 
+                            &copy; <a class="border-bottom" href="#">M2L-COIN</a> Tous droits réservés. 
 							<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
 							
                         </div>
@@ -25,7 +25,7 @@
                         
                         
                     </div>
-                    <div class="col-md-5 text-center m-0 text-align-center">
+                    <div class="col-md-5 text-center mt-4 text-align-center" style="display: block; margin: auto">
                         Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> 
                     </div>
                 </div>

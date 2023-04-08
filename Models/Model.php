@@ -1,8 +1,7 @@
 <?php
-
-
     class Model
     {
+       
 
         private $connection = NULL; // Ce champ la servira pour savoir si nous avons pu se connecter sur la base de données ou pas...
         private $DSN = "mysql:host=localhost;dbname=leboncoin";
@@ -14,20 +13,24 @@
         );
 
         // Connexion vers la base de données... cette fonction devrai figurée dans toutes les fonctions qui vont suivre...
-        private function connectToBDD(){
-            try{
+        private function connectToBDD()
+        {
+            try
+            {
                 // On tente d'ouvrir une connexion vers la base de données MYSQL...
                 $this->connection = new PDO($this->DSN, $this->USER, $this->PWD, $this->OPTIONS);
                 
             }
-            catch(PDOException $e){
+            catch(PDOException $e)
+            {
                 // echo "Echec de connexion !";
                 return false;
             }
         }   
-
+//-------------------------------------------------------------------------------------------------------
         // Récupérer toutes les localisations depuis la base de données...
-        public function getAllLocations(){
+        public function getAllLocations()
+        {
             // J'ouvre la connexion vers ma base de données...
             $this->connectToBDD();
             if($this->connection != NULL){
@@ -44,27 +47,9 @@
             }
         }
 
-        //Récupérer un utilisateur donné
-        public function getAuser($idUtilisateur)
-        {
-            // J'ouvre la connexion vers ma base de données...
-            $this->connectToBDD();
-            if($this->connection != NULL){
-                // Connexion vers la base de données OK !
-                $queryString = "SELECT * FROM `users` WHERE idU = ?";
-                $queryPrepared = $this->connection->prepare($queryString, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-                $queryPrepared->execute(array($idUtilisateur));
-                $resultSet = $queryPrepared->fetch(PDO::FETCH_ASSOC);
-                if(!empty($resultSet))
-                {
-                    return $resultSet;
-                }
-                return NULL;
-            }
-        }
-
         // Récupérer toutes les catégories depuis la base de données...
-        public function getAllCategories(){
+        public function getAllCategories()
+        {
             // J'ouvre la connexion vers ma base de données...
             $this->connectToBDD();
             if($this->connection != NULL){
@@ -81,7 +66,8 @@
         }
 
         // Récupérer toutes les top catégories depuis la base de données...
-        public function getTopCategory(){
+        public function getTopCategory()
+        {
             // J'ouvre la connexion vers ma base de données...
             $this->connectToBDD();
             if($this->connection != NULL){
@@ -101,7 +87,9 @@
                 return NULL;
             }
         }
-        // Connection sur L'application
+//-------------------------------------------------------------------------------------------------------
+
+        // Check si un utilisateur existe (a un compte)
         public function userLogiIn($email, $pwd)
         {
             // J'ouvre la connexion vers ma base de données...
@@ -153,26 +141,6 @@
             }
         }
 
-        //Inscription d'un nouvel utilisateur
-        public function insertAnnonce($array) 
-        {
-            // J'ouvre la connexion vers ma base de données...
-            $this->connectToBDD();
-            if($this->connection != NULL)
-            {
-                
-                $queryString = "INSERT INTO `annonce`(titre,prix,description,photo,idCategorie,codeLocalisation,idUser) VALUES (?,?,?,?,?,?,?)";
-                $queryPrepared = $this->connection->prepare($queryString, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-                $resultSet = $queryPrepared->execute($array);
-                
-                if(!$resultSet)
-                {
-                    return FALSE;
-                }
-                return TRUE;
-            }
-        }
-
         //Vérification de la conformité de l'ancien mot de passe
         public function checkOldMdp($idUtilisateur) 
         {
@@ -194,6 +162,7 @@
             }
         }
 
+        //Modification du mot de passe
         public function updateMdp($motDePasse, $idUtilisateur) 
         {
             // J'ouvre la connexion vers ma base de données...
@@ -213,6 +182,7 @@
             }
         }
 
+        //Modification des informations d'un utilisateur
         public function updateUserInfos($array) 
         {
             // J'ouvre la connexion vers ma base de données...
@@ -235,8 +205,48 @@
             }
         }
 
+        //Récupérer un utilisateur à partir de son identifiant
+        public function getUserById($idUtilisateur)
+        {
+            // J'ouvre la connexion vers ma base de données...
+            $this->connectToBDD();
+            if($this->connection != NULL){
+                // Connexion vers la base de données OK !
+                $queryString = "SELECT * FROM `users` WHERE idU = ?";
+                $queryPrepared = $this->connection->prepare($queryString, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+                $queryPrepared->execute(array($idUtilisateur));
+                $resultSet = $queryPrepared->fetch(PDO::FETCH_ASSOC);
+                if(!empty($resultSet))
+                {
+                    return $resultSet;
+                }
+                return NULL;
+            }
+        }
 
-        // Connection sur L'application
+//----------------ANNONCES-------------ANNONCES------------------ANNONCES-------------
+
+        //Inscription d'une nouvelle annonce
+        public function insertAnnonce($array) 
+        {
+            // J'ouvre la connexion vers ma base de données...
+            $this->connectToBDD();
+            if($this->connection != NULL)
+            {
+                
+                $queryString = "INSERT INTO `annonce`(titre,prix,description,photo,idCategorie,codeLocalisation,idUser) VALUES (?,?,?,?,?,?,?)";
+                $queryPrepared = $this->connection->prepare($queryString, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+                $resultSet = $queryPrepared->execute($array);
+                
+                if(!$resultSet)
+                {
+                    return FALSE;
+                }
+                return TRUE;
+            }
+        }
+
+        // Récupérations des annonces d'un  utilisateur donné
         public function getUserAnnonces($userID){
             // J'ouvre la connexion vers ma base de données...
             $this->connectToBDD();
@@ -258,6 +268,7 @@
             }
         }
 
+        //Récupération de toutes les annonces
         public function getAllAnnonces()
         {
             // J'ouvre la connexion vers ma base de données...
@@ -277,6 +288,72 @@
             }
         }
 
+        //Récupération d'une annonce à partir de la base de donnée
+        public function getAnnonceById($idAnnonce)
+        {
+            // J'ouvre la connexion vers ma base de données...
+            $this->connectToBDD();
+            if($this->connection != NULL)
+            {
+                // Connexion vers la base de données OK !
+                $queryString = "SELECT * FROM annonce WHERE idAnnonce = ?";
+                $queryPrepared = $this->connection->prepare($queryString, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+                $queryPrepared->execute(array($idAnnonce));
+                $resultSet = $queryPrepared->fetch(PDO::FETCH_ASSOC);
+                if(!empty($resultSet))
+                {
+                    return $resultSet;
+                }
+                return NULL;
+            }
+        }
+
+        //Fonction en stand by
+        public function updateAnnonceImg($array) 
+        {
+            // J'ouvre la connexion vers ma base de données...
+            $this->connectToBDD();
+            if($this->connection != NULL)
+            {
+                
+                $queryString = "UPDATE `annonce` SET  photo = ?  WHERE idAnnonce = ?";
+                $queryPrepared = $this->connection->prepare($queryString, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+                $resultSet = $queryPrepared->execute($array);
+                
+                if(!$resultSet)
+                {
+                    return FALSE;
+                }
+                return TRUE;
+            }
+        }
+
+        //Modification des informations d'une annonce
+        public function updateAnnonce($array) 
+        {
+            // J'ouvre la connexion vers ma base de données...
+            $this->connectToBDD();
+            if($this->connection != NULL)
+            {
+                $queryString = "UPDATE `annonce` SET    
+                        titre = ?,
+                        prix = ?,
+                        description = ?,
+                        idCategorie = ?,
+                        codeLocalisation = ?  WHERE idAnnonce = ?";
+                
+                $queryPrepared = $this->connection->prepare($queryString, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+                $resultSet = $queryPrepared->execute($array);
+                
+                if(!$resultSet)
+                {
+                    return FALSE;
+                }
+                return TRUE;
+            }
+        }
+
+        //Suppression  d'une annonce
         public function deleteAnn($lid)
         {
             // J'ouvre la connexion vers ma base de données...
@@ -296,7 +373,7 @@
             }
         }
 
-        // Connection sur L'application
+        // Récupération des favoris d'un utilisateur
         public function getFavoris($userID)
         {
             // J'ouvre la connexion vers ma base de données...
@@ -321,7 +398,10 @@
             }
         }
 
-        public function getAnnoncesCritaria($cat, $what, $loc){
+
+        //Stand by
+        public function getAnnoncesCritaria($cat, $what, $loc)
+        {
             // connect to BDD
             $this->connectToBDD();
             
@@ -349,6 +429,9 @@
             }
             return NULL;
         }
+
+
+        
 
     }
 
