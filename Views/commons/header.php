@@ -16,6 +16,7 @@
     //     echo "C'est pas bon";
     // }
     
+    
 ?>
 
 
@@ -133,4 +134,6 @@
                 </div>
             </nav>
         </div>
+    </div>
+    
         <!-- Navbar End -->

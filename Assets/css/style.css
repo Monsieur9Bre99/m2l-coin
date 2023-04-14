@@ -6,6 +6,8 @@
     --dark: #0E2E50;
 }
 
+
+
 .back-to-top {
     position: fixed;
     display: none;
@@ -33,6 +35,44 @@
 /*** Button ***/
 .btn {
     transition: .5s;
+}
+
+.btn-inverse-warning 
+{
+    background-color: rgba(254, 215, 19, 0.3);
+    background-image: none;
+    border-color: rgba(254, 215, 19, 0); 
+    color: #FF6E14;
+}
+
+.btn-inverse-warning:not(.btn-inverse-light) 
+{
+    color: ##FF6E14; 
+}
+
+.btn-inverse-warning:hover 
+{
+    color: #ffffff;
+    background-color: #FF6E14;
+    border-color: #FF6E14;
+}
+
+.btn-inverse-warning.focus, .btn-inverse-warning:focus 
+{
+    -webkit-box-shadow: 0 0 0 3px rgba(254, 215, 19, 0.5);
+    box-shadow: 0 0 0 3px rgba(254, 215, 19, 0.5); 
+}
+.btn-inverse-warning.disabled, .btn-inverse-warning:disabled 
+{
+    color: #fed713;
+    background-color: transparent; 
+}
+.btn-inverse-warning.active, .btn-inverse-warning:active,
+.show > .btn-inverse-warning.dropdown-toggle
+{
+    color: #ffffff;
+    background-color: #fed713;
+    border-color: #fed713; 
 }
 
 .btn.btn-primary,

@@ -248,7 +248,6 @@
                 exit();
             }
         }
-        
 
         public function getUserAnnonces()
         {
@@ -340,11 +339,11 @@
 
         public function detailAnnonce($lid)
         {
+            
             if (is_numeric($lid)) 
             {
                 $vraiId = $lid / 6895;
 
-                
                 if ($vraiId == 0) 
                 {
                     $_SESSION["message"] = "Impossible d'afficher le détail d'une annonce qui n'existe pas !! ";
@@ -365,9 +364,20 @@
                 {
                     $model = new Model();
                     $GLOBALS["lAnnonce"] = $result = $model->getAnnonceById($vraiId);
+                    
+                    
+                    
                     if ($result) 
                     {
                         
+                        if (isset($_SESSION["idU"])) 
+                        {
+                            $GLOBALS["conversation"] = $model->getConvId($_SESSION["idU"], $result["idUser"]);
+                            $GLOBALS["favoris"] = $model->checkAnnonceInUserFavoris($_SESSION["idU"], $result["idAnnonce"]);
+                        }
+
+                        //var_dump($GLOBALS["favoris"]); die();
+
                         $this->valLoc = $result["codeLocalisation"];
                         $this->valCat = $result["idCategorie"];
 
@@ -578,5 +588,3 @@
             return '<select id="floatingSelect" class="form-control" name="'.$name.'">'.implode($html_options).'</select>';
         }
     }
-
-?>

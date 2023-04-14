@@ -3,6 +3,7 @@
     include(__DIR__."\\Controllers\\LandingController.php");
     include(__DIR__."\\Controllers\\AccountController.php");
     include(__DIR__."\\Controllers\\AnnonceController.php");
+    include(__DIR__."\\Controllers\\FavorisController.php");
     include(__DIR__."\\Controllers\\SearchController.php");
     include(__DIR__."\\Controllers\\UpdateController.php");
 
@@ -105,14 +106,30 @@
                         break; 
 
                     
-                    case preg_match('/detail.*/', strtolower($root)) ? true : false:// TODO:
+                    case preg_match("/detail.*/", strtolower($root)) ? true : false:// TODO:
                         $urlSplited = explode('/', $_SERVER['REQUEST_URI']) ; //On divise le chemin selon le critère "/"
                         $a = $urlSplited[(count($urlSplited) -1)]; // On accède ensuite à l'id de l'annonce
                         $GLOBALS['lid'] = (int)$a;
 
                         $controller = new AnnonceController();
                         $controller->detailAnnonce($GLOBALS["lid"]);
-                        break;        
+                        break; 
+                        
+                    case preg_match("/ajout-favoris.*/", strtolower($root)) ? true : false: // TODO:
+                        
+                        $urlSplited = explode('/', $_SERVER['REQUEST_URI']) ; //On divise le chemin selon le critère "/"
+                        $idU = $urlSplited[(count($urlSplited) -2)]; // On accède ensuite à l'id de l'utilisateur
+                        $idA = $urlSplited[(count($urlSplited) -1)]; // On accède ensuite à l'id de l'annonce
+
+                        $idU = (int)$idU;
+                        $idA = (int)$idA;
+
+                        
+                        
+                        $controller = new FavorisController();
+                        $controller->actionSurFavoris($idU, $idA);
+                        break;    
+
 
                     case "mes-annonces":
                         $controller = new AnnonceController();
@@ -124,7 +141,6 @@
                         $controller->mesFavoris();
                         break;
 
-                    
 
                     case preg_match('/search?.*/', strtolower($root)) ? true : false: // TODO:
                         $controller = new SearchController();
@@ -135,6 +151,7 @@
                         $controller = new SearchController('resultsearch');
                         echo "Load";
                         break;
+
                     default: // TODO:
                         echo "URL NOT FOUND 404 !";
                 }
@@ -150,4 +167,3 @@
     
     // Start WebApp
     Index::main();
-?>

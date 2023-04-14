@@ -296,7 +296,10 @@
             if($this->connection != NULL)
             {
                 // Connexion vers la base de données OK !
-                $queryString = "SELECT * FROM annonce WHERE idAnnonce = ?";
+                $queryString = "SELECT a.*, u.nom as nomProprietaire, u.prenom as prenomProprietaire
+                                FROM annonce a INNER JOIN users u
+                                ON a.idUser = u.idU 
+                                WHERE a.idAnnonce = ?";
                 $queryPrepared = $this->connection->prepare($queryString, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
                 $queryPrepared->execute(array($idAnnonce));
                 $resultSet = $queryPrepared->fetch(PDO::FETCH_ASSOC);
@@ -430,10 +433,93 @@
             return NULL;
         }
 
-
+        //Selectionner une conversation à partir de l'utilisateur et l'annonce
+        public function getConvId($idS, $idA)
+        {
+            // J'ouvre la connexion vers ma base de données...
+            $this->connectToBDD();
+            if($this->connection != NULL)
+            {
+                // Connexion vers la base de données OK !
+                $queryString = "SELECT * FROM `message` where idSender = ? and idAnnonce = ?";             
+                $queryPrepared = $this->connection->prepare($queryString, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+                $queryPrepared->execute(array($idS, $idA));
+                $resultSet = $queryPrepared->fetchAll(PDO::FETCH_ASSOC);
+                if(!empty($resultSet))
+                {
+                    if ($resultSet->rowCount() == 0) 
+                    {
+                        return 0;
+                    }
+                    return $resultSet;
+                }
+                return NULL;
+            }
+        } 
         
+        //Vérifie si une annonce a déjà été ajoutée en favoris par un utilisateur
+        public function checkAnnonceInUserFavoris($idU, $idA)
+        {
+            
+            // var_dump($idU); 
+            // var_dump($idA);
+            // die();
+            // J'ouvre la connexion vers ma base de données...
+            $this->connectToBDD();
+            if($this->connection != NULL)
+            {
+                // Connexion vers la base de données OK !
+                $queryString = "SELECT * FROM `favoris` WHERE idUtilisateur = ? AND idA = ?";    
+                $queryPrepared = $this->connection->prepare($queryString, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+                $queryPrepared->execute(array($idU, $idA));
+                $resultSet = $queryPrepared->fetch(PDO::FETCH_ASSOC);
+                if($resultSet != FALSE)
+                {
+                    return FALSE;
+                }
+                return TRUE;
+            }
+        }
+
+        //Insertion d'une annonce en favoris
+        public function insertFavoris($idU, $idA)
+        {
+            // J'ouvre la connexion vers ma base de données...
+            $this->connectToBDD();
+            if($this->connection != NULL)
+            {
+                // Connexion vers la base de données OK !
+                $queryString = "INSERT INTO `favoris`(idUtilisateur, idA) VALUES (?, ?)";             
+                $queryPrepared = $this->connection->prepare($queryString, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+                $resultSet = $queryPrepared->execute(array($idU, $idA));
+                 
+                if($resultSet)
+                {
+                    return TRUE;
+                }
+                return FALSE;
+            }
+        }
+
+        //Suppression d'une annonce en favoris
+        public function deleteFavoris($idU, $idA)
+        {
+            // J'ouvre la connexion vers ma base de données...
+            $this->connectToBDD();
+            if($this->connection != NULL)
+            {
+                // Connexion vers la base de données OK !
+                $queryString = "DELETE FROM `favoris` WHERE idUtilisateur = ? AND idA = ?";             
+                $queryPrepared = $this->connection->prepare($queryString, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+                $resultSet = $queryPrepared->execute(array($idU, $idA));
+                 
+                if($resultSet)
+                {
+                    return TRUE;
+                }
+                return FALSE;
+            }
+        }
+
 
     }
-
-
-?>
