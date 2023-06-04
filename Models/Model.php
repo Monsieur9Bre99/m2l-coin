@@ -1,16 +1,22 @@
 <?php
+    /**
+        * Classe Model, elle tout les models de fonctionnalités de l'application
+    */
+
     class Model
     {
-       
-
-        private $connection = NULL; // Ce champ la servira pour savoir si nous avons pu se connecter sur la base de données ou pas...
+        // la ligne ci-dessous sert à savoir si nous avons pu se connecter sur la base de données ou pas...
+        private $connection = NULL; 
+    /*
+     * @Note: Veuillez remplacer les informations ci-dessous par les vôtres
+     */
         private $DSN = "mysql:host=localhost;dbname=leboncoin";
         private $USER = "root";
         private $PWD = "";
         // By default
-        private $OPTIONS = array (
+        private $OPTIONS = [
             PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8mb4"
-        );
+        ];
 
         // Connexion vers la base de données... cette fonction devrai figurée dans toutes les fonctions qui vont suivre...
         private function connectToBDD()
@@ -520,6 +526,4 @@
                 return FALSE;
             }
         }
-
-
     }
