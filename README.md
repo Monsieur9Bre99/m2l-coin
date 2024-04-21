@@ -88,7 +88,9 @@ Pour installer M2L-COIN dans votre environnement de développement local avec Do
 
 ## Arborescence : 
 
-#M2L-COIN/
+# M2L-COIN/
+    |-- Data/
+        |-- m2l-coin.db.sql
     |-- server/
         |-- 000-default.conf
         |-- apache2.conf
@@ -105,12 +107,12 @@ Pour installer M2L-COIN dans votre environnement de développement local avec Do
             |-- lib/
             |-- scss/
         |-- Controllers/
-            |--AccountController.php
-            |--AnnonceController.php
-            |--FavorisController.php
-            |--LandingController.php
-            |--MessageController.php
-            |--SearchController.php
+            |-- AccountController.php
+            |-- AnnonceController.php
+            |-- FavorisController.php
+            |-- LandingController.php
+            |-- MessageController.php
+            |-- SearchController.php
         |-- Models/
             |-- Model.php
         |-- Template/
@@ -127,34 +129,33 @@ Pour installer M2L-COIN dans votre environnement de développement local avec Do
                     |-- property-agent.html
                     |-- property-list.html
                     |-- property-type.html
-                    |-- READ-ME.txt
+                    |-- README.txt
                     |-- site-template.jpg
                     |-- testimonial.html
         |-- vendor/
-            |--composer/
-            |--phpmailer/
-            |--autoload.php
+            |-- composer/
+            |-- phpmailer/
+            |-- autoload.php
         |-- Views/
             |-- commons/
                 |-- header.php
                 |-- footer.php  
             |-- account.php         
             |-- favoris.php      
-            |--mes-annonces.php  
-            |--algo.php          
-            |--connexion.php      
-            |--home.php         
-            |--messages.php      
-            |--annonce-form.php  
-            |--detail-annonce.php  
-            |--inscription.php  
-            |--modifAnnonce.php
-            |--mon-profil.php
-            |--resultsearch.php
+            |-- mes-annonces.php  
+            |-- algo.php          
+            |-- connexion.php      
+            |-- home.php         
+            |-- messages.php      
+            |-- annonce-form.php  
+            |-- detail-annonce.php  
+            |-- inscription.php  
+            |-- modifAnnonce.php
+            |-- mon-profil.php
+            |-- resultsearch.php
         |-- Index.php
         |-- .gitignore
         |-- docker.compose.yml
-        |-- m2l-coin.db.sql
         |-- README.md
     
 ## Installation avec WAMP :
@@ -180,20 +181,18 @@ Les contributions à ce projet sont les bienvenues ! Si vous trouvez des bugs ou
   <tr align="center">
     <td>
         <a href="https://github.com/hamidadj13">
-        <img src="https://avatars.githubusercontent.com/u/79259452?s=100" />
+        <img src="https://avatars.githubusercontent.com/u/79259452?s=100" width="100" height="100" />
         <br/>
         <sub><b>Hamid O.</b></sub></a>
     </td>
-     </tr>
-    <tr>
     <td>
         <a href="https://github.com/herrduden">
-        <img src="https://avatars.githubusercontent.com/u/78962948?s=100" />
+        <img src="https://avatars.githubusercontent.com/u/78962948?s=100" width="100" height="100" />
         <br/>
         <sub><b>Mohammed B.</b></sub></a>
     </td>
-    </tr>
-<table>
+  </tr>
+</table>
 
 ### Superviseur
 
