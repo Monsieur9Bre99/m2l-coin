@@ -89,73 +89,73 @@ Pour installer M2L-COIN dans votre environnement de développement local avec Do
 ## Arborescence : 
 
 #M2L-COIN/
-|-- server/
-    |-- 000-default.conf
-    |-- apache2.conf
-    |-- php.ini
-|-- site/
-    |-- Dockerfile
-|-- www/
-    |-- .env
-    |-- .env.example
-    |-- Assets/
-        |-- css/
-        |-- img/
-        |-- jss/
-        |-- lib/
-        |-- scss/
-    |-- Controllers/
-        |--AccountController.php
-        |--AnnonceController.php
-        |--FavorisController.php
-        |--LandingController.php
-        |--MessageController.php
-        |--SearchController.php
-    |-- Models/
-        |-- Model.php
-    |-- Template/
-        |-- site-template
+    |-- server/
+        |-- 000-default.conf
+        |-- apache2.conf
+        |-- php.ini
+    |-- site/
+        |-- Dockerfile
+    |-- www/
+        |-- .env
+        |-- .env.example
+        |-- Assets/
             |-- css/
-            |-- js/
+            |-- img/
+            |-- jss/
             |-- lib/
             |-- scss/
-                |-- 404.html
-                |-- about.html
-                |-- contact.html
-                |-- index.html
-                |-- LICENSE.txt
-                |-- property-agent.html
-                |-- property-list.html
-                |-- property-type.html
-                |-- READ-ME.txt
-                |-- site-template.jpg
-                |-- testimonial.html
-    |-- vendor/
-        |--composer/
-        |--phpmailer/
-        |--autoload.php
-    |-- Views/
-        |-- commons/
-            |-- header.php
-            |-- footer.php  
-        |-- account.php         
-        |-- favoris.php      
-        |--mes-annonces.php  
-        |--algo.php          
-        |--connexion.php      
-        |--home.php         
-        |--messages.php      
-        |--annonce-form.php  
-        |--detail-annonce.php  
-        |--inscription.php  
-        |--modifAnnonce.php
-        |--mon-profil.php
-        |--resultsearch.php
-    |-- Index.php
-    |-- .gitignore
-    |-- docker.compose.yml
-    |-- m2l-coin.db.sql
-    |-- README.md
+        |-- Controllers/
+            |--AccountController.php
+            |--AnnonceController.php
+            |--FavorisController.php
+            |--LandingController.php
+            |--MessageController.php
+            |--SearchController.php
+        |-- Models/
+            |-- Model.php
+        |-- Template/
+            |-- site-template
+                |-- css/
+                |-- js/
+                |-- lib/
+                |-- scss/
+                    |-- 404.html
+                    |-- about.html
+                    |-- contact.html
+                    |-- index.html
+                    |-- LICENSE.txt
+                    |-- property-agent.html
+                    |-- property-list.html
+                    |-- property-type.html
+                    |-- READ-ME.txt
+                    |-- site-template.jpg
+                    |-- testimonial.html
+        |-- vendor/
+            |--composer/
+            |--phpmailer/
+            |--autoload.php
+        |-- Views/
+            |-- commons/
+                |-- header.php
+                |-- footer.php  
+            |-- account.php         
+            |-- favoris.php      
+            |--mes-annonces.php  
+            |--algo.php          
+            |--connexion.php      
+            |--home.php         
+            |--messages.php      
+            |--annonce-form.php  
+            |--detail-annonce.php  
+            |--inscription.php  
+            |--modifAnnonce.php
+            |--mon-profil.php
+            |--resultsearch.php
+        |-- Index.php
+        |-- .gitignore
+        |-- docker.compose.yml
+        |-- m2l-coin.db.sql
+        |-- README.md
     
 ## Installation avec WAMP :
 
@@ -184,12 +184,15 @@ Les contributions à ce projet sont les bienvenues ! Si vous trouvez des bugs ou
         <br/>
         <sub><b>Hamid O.</b></sub></a>
     </td>
+     </tr>
+    <tr>
     <td>
         <a href="https://github.com/herrduden">
         <img src="https://avatars.githubusercontent.com/u/78962948?s=100" />
         <br/>
         <sub><b>Mohammed B.</b></sub></a>
     </td>
+    </tr>
 <table>
 
 ### Superviseur
