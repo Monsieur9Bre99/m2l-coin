@@ -1,4 +1,3 @@
-
 <p align="center">
   <img src="https://breroot.fr/projects/m2l-coin/logo.png">
 </p>
@@ -73,6 +72,100 @@ Pour installer M2L-COIN dans votre environnement de développement local avec WA
    3. Mettez à jour les paramètres de connexion à la base de données dans le fichier de configuration (`Model.php`) avec les informations d'identification de votre base de données.
    4. Importez le fichier `m2l-coin.db.sql` qui se trouve dans `Data/` dans votre base de données via via phpMyAdmin.
    5. Accédez à votre projet via `localhost/m2l-coin` dans votre navigateur
+
+## Arborescence : 
+
+# M2L-COIN/
+    |-- Assets/
+        |-- css/
+        |-- img/
+        |-- jss/
+        |-- lib/
+        |-- scss/
+    |-- Controllers/
+        |-- AccountController.php
+        |-- AnnonceController.php
+        |-- FavorisController.php
+        |-- LandingController.php
+        |-- MessageController.php
+        |-- SearchController.php
+    |-- Data/
+        |-- m2l-coin.db.sql
+    |-- Models/
+        |-- Model.php
+    |-- Template/
+        |-- site-template
+            |-- css/
+            |-- js/
+            |-- lib/
+            |-- scss/
+                |-- 404.html
+                |-- about.html
+                |-- contact.html
+                |-- index.html
+                |-- LICENSE.txt
+                |-- property-agent.html
+                |-- property-list.html
+                |-- property-type.html
+                |-- README.md
+                |-- site-template.jpg
+                |-- testimonial.html
+    |-- Views/
+        |-- commons/
+            |-- header.php
+            |-- footer.php  
+        |-- account.php         
+        |-- favoris.php      
+        |-- mes-annonces.php  
+        |-- algo.php          
+        |-- connexion.php      
+        |-- home.php         
+        |-- messages.php      
+        |-- annonce-form.php  
+        |-- detail-annonce.php  
+        |-- inscription.php  
+        |-- modifAnnonce.php
+        |-- mon-profil.php
+        |-- resultsearch.php
+    |-- .htaccess
+    |-- Index.php
+    |-- README.md
+    
+## Contributions
+
+Les contributions à ce projet sont les bienvenues ! Si vous trouvez des bugs ou souhaitez suggérer de nouvelles fonctionnalités, veuillez soumettre un problème ou créer une demande d'extension sur le dépôt GitHub tout en respectant le style de code du projet et les conventions décrites dans les directives de contribution.
+
+### Contributeurs
+
+<table>
+  <tr align="center">
+    <td>
+        <a href="https://github.com/hamidadj13">
+        <img src="https://avatars.githubusercontent.com/u/79259452?s=100" width="100" height="100" />
+        <br/>
+        <sub><b>Hamid O.</b></sub></a>
+    </td>
+    <td>
+        <a href="https://github.com/herrduden">
+        <img src="https://avatars.githubusercontent.com/u/78962948?s=100" width="100" height="100" />
+        <br/>
+        <sub><b>Mohammed B.</b></sub></a>
+    </td>
+  </tr>
+</table>
+
+### Superviseur
+
+<table>
+  <tr align="center">
+    <td>
+        <a href="https://github.com/ESSAMAMI">
+        <img src="https://avatars.githubusercontent.com/u/29731343?s=100" />
+        <br/>
+        <sub><b>Hamza E.</b></sub></a>
+    </td>
+ </tr>
+<table>
 
 ## Remerciements
 
