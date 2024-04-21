@@ -1,0 +1,17 @@
+# Environnement
+.env
+www/.env
+# Docker
+.dockerignore
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+
+# Ignore the vendor directory (composer, phpmailer)
+vendor/
+
+# Top secret file
+sandbox/

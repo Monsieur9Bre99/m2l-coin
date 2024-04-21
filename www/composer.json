@@ -1,0 +1,12 @@
+{
+    "name": "root/html",
+    "type": "project",
+    "require": {
+        "phpmailer/phpmailer": "^6.9"
+    },
+    "authors": [
+        {
+            "name": "breroot"
+        }
+    ]
+}
