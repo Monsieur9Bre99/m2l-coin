@@ -175,9 +175,9 @@ THANKS.
 
 ## Contact
 
-- [Mon LinkedIn](https://fr.linkedin.com/in/bre-sanctifi%C3%A9-36b3a822b)
-- [LinkedIn de Hamid O.](https://www.linkedin.com/in/hamid-oketokoun-114090237/)
+- [BREROOT](https://fr.linkedin.com/in/bre-sanctifi%C3%A9-36b3a822b)
+- [HAMID](https://www.linkedin.com/in/hamid-oketokoun-114090237/)
 
 ##
 
-<h3><p align="center">M2L-COIN - Leboncoin de la M2L - @breroot</p></h3>
+<h3><p align="center">M2L-COIN - Leboncoin de la M2L - &copy; 2023</p></h3>
