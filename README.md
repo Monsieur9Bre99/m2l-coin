@@ -76,7 +76,6 @@ Pour installer M2L-COIN dans votre environnement de développement local avec WA
 ## Arborescence : 
 
 # M2L-COIN/
-    Directory structure:
 └── monsieur9bre99-m2l-coin/
     ├── README.md
     ├── Index.php
