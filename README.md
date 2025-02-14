@@ -76,60 +76,273 @@ Pour installer M2L-COIN dans votre environnement de développement local avec WA
 ## Arborescence : 
 
 # M2L-COIN/
-    |-- Assets/
-        |-- css/
-        |-- img/
-        |-- jss/
-        |-- lib/
-        |-- scss/
-    |-- Controllers/
-        |-- AccountController.php
-        |-- AnnonceController.php
-        |-- FavorisController.php
-        |-- LandingController.php
-        |-- MessageController.php
-        |-- SearchController.php
-    |-- Data/
-        |-- m2l-coin.db.sql
-    |-- Models/
-        |-- Model.php
-    |-- Template/
-        |-- site-template
-            |-- css/
-            |-- js/
-            |-- lib/
-            |-- scss/
-                |-- 404.html
-                |-- about.html
-                |-- contact.html
-                |-- index.html
-                |-- LICENSE.txt
-                |-- property-agent.html
-                |-- property-list.html
-                |-- property-type.html
-                |-- README.md
-                |-- site-template.jpg
-                |-- testimonial.html
-    |-- Views/
-        |-- commons/
-            |-- header.php
-            |-- footer.php  
-        |-- account.php         
-        |-- favoris.php      
-        |-- mes-annonces.php  
-        |-- algo.php          
-        |-- connexion.php      
-        |-- home.php         
-        |-- messages.php      
-        |-- annonce-form.php  
-        |-- detail-annonce.php  
-        |-- inscription.php  
-        |-- modifAnnonce.php
-        |-- mon-profil.php
-        |-- resultsearch.php
-    |-- .htaccess
-    |-- Index.php
-    |-- README.md
+    Directory structure:
+└── monsieur9bre99-m2l-coin/
+    ├── README.md
+    ├── Index.php
+    ├── leboncoin.sql
+    ├── .htaccess
+    ├── Assets/
+    │   ├── css/
+    │   │   └── style.css
+    │   ├── img/
+    │   │   └── annonce/
+    │   ├── js/
+    │   │   └── main.js
+    │   ├── lib/
+    │   │   ├── animate/
+    │   │   │   └── animate.css
+    │   │   ├── easing/
+    │   │   │   └── easing.js
+    │   │   ├── owlcarousel/
+    │   │   │   ├── LICENSE
+    │   │   │   ├── owl.carousel.js
+    │   │   │   └── assets/
+    │   │   │       ├── owl.carousel.css
+    │   │   │       ├── owl.theme.default.css
+    │   │   │       └── owl.theme.green.css
+    │   │   ├── waypoints/
+    │   │   │   └── links.php
+    │   │   └── wow/
+    │   │       └── wow.js
+    │   └── scss/
+    │       ├── bootstrap.scss
+    │       └── bootstrap/
+    │           └── scss/
+    │               ├── _accordion.scss
+    │               ├── _alert.scss
+    │               ├── _badge.scss
+    │               ├── _breadcrumb.scss
+    │               ├── _button-group.scss
+    │               ├── _buttons.scss
+    │               ├── _card.scss
+    │               ├── _carousel.scss
+    │               ├── _close.scss
+    │               ├── _containers.scss
+    │               ├── _dropdown.scss
+    │               ├── _forms.scss
+    │               ├── _functions.scss
+    │               ├── _grid.scss
+    │               ├── _helpers.scss
+    │               ├── _images.scss
+    │               ├── _list-group.scss
+    │               ├── _mixins.scss
+    │               ├── _modal.scss
+    │               ├── _nav.scss
+    │               ├── _navbar.scss
+    │               ├── _offcanvas.scss
+    │               ├── _pagination.scss
+    │               ├── _popover.scss
+    │               ├── _progress.scss
+    │               ├── _reboot.scss
+    │               ├── _root.scss
+    │               ├── _spinners.scss
+    │               ├── _tables.scss
+    │               ├── _toasts.scss
+    │               ├── _tooltip.scss
+    │               ├── _transitions.scss
+    │               ├── _type.scss
+    │               ├── _utilities.scss
+    │               ├── _variables.scss
+    │               ├── bootstrap-grid.scss
+    │               ├── bootstrap-reboot.scss
+    │               ├── bootstrap-utilities.scss
+    │               ├── bootstrap.scss
+    │               ├── forms/
+    │               │   ├── _floating-labels.scss
+    │               │   ├── _form-check.scss
+    │               │   ├── _form-control.scss
+    │               │   ├── _form-range.scss
+    │               │   ├── _form-select.scss
+    │               │   ├── _form-text.scss
+    │               │   ├── _input-group.scss
+    │               │   ├── _labels.scss
+    │               │   └── _validation.scss
+    │               ├── helpers/
+    │               │   ├── _clearfix.scss
+    │               │   ├── _colored-links.scss
+    │               │   ├── _position.scss
+    │               │   ├── _ratio.scss
+    │               │   ├── _stretched-link.scss
+    │               │   ├── _text-truncation.scss
+    │               │   └── _visually-hidden.scss
+    │               ├── mixins/
+    │               │   ├── _alert.scss
+    │               │   ├── _border-radius.scss
+    │               │   ├── _box-shadow.scss
+    │               │   ├── _breakpoints.scss
+    │               │   ├── _buttons.scss
+    │               │   ├── _caret.scss
+    │               │   ├── _clearfix.scss
+    │               │   ├── _color-scheme.scss
+    │               │   ├── _container.scss
+    │               │   ├── _deprecate.scss
+    │               │   ├── _forms.scss
+    │               │   ├── _gradients.scss
+    │               │   ├── _grid.scss
+    │               │   ├── _image.scss
+    │               │   ├── _list-group.scss
+    │               │   ├── _lists.scss
+    │               │   ├── _pagination.scss
+    │               │   ├── _reset-text.scss
+    │               │   ├── _resize.scss
+    │               │   ├── _table-variants.scss
+    │               │   ├── _text-truncate.scss
+    │               │   ├── _transition.scss
+    │               │   ├── _utilities.scss
+    │               │   └── _visually-hidden.scss
+    │               ├── utilities/
+    │               │   └── _api.scss
+    │               └── vendor/
+    │                   └── _rfs.scss
+    ├── Controllers/
+    │   ├── AccountController.php
+    │   ├── AnnonceController.php
+    │   ├── FavorisController.php
+    │   ├── LandingController.php
+    │   ├── SearchController.php
+    │   └── UpdateController.php
+    ├── Models/
+    │   ├── Model.php
+    │   └── algo.php
+    ├── Template/
+    │   └── real-estate-html-template/
+    │       ├── 404.html
+    │       ├── LICENSE.txt
+    │       ├── READ-ME.txt
+    │       ├── about.html
+    │       ├── contact.html
+    │       ├── index.html
+    │       ├── property-agent.html
+    │       ├── property-list.html
+    │       ├── property-type.html
+    │       ├── testimonial.html
+    │       ├── css/
+    │       │   └── style.css
+    │       ├── js/
+    │       │   └── main.js
+    │       ├── lib/
+    │       │   ├── animate/
+    │       │   │   └── animate.css
+    │       │   ├── easing/
+    │       │   │   └── easing.js
+    │       │   ├── owlcarousel/
+    │       │   │   ├── LICENSE
+    │       │   │   ├── owl.carousel.js
+    │       │   │   └── assets/
+    │       │   │       ├── owl.carousel.css
+    │       │   │       ├── owl.theme.default.css
+    │       │   │       └── owl.theme.green.css
+    │       │   ├── waypoints/
+    │       │   │   └── links.php
+    │       │   └── wow/
+    │       │       └── wow.js
+    │       └── scss/
+    │           ├── bootstrap.scss
+    │           └── bootstrap/
+    │               └── scss/
+    │                   ├── _accordion.scss
+    │                   ├── _alert.scss
+    │                   ├── _badge.scss
+    │                   ├── _breadcrumb.scss
+    │                   ├── _button-group.scss
+    │                   ├── _buttons.scss
+    │                   ├── _card.scss
+    │                   ├── _carousel.scss
+    │                   ├── _close.scss
+    │                   ├── _containers.scss
+    │                   ├── _dropdown.scss
+    │                   ├── _forms.scss
+    │                   ├── _functions.scss
+    │                   ├── _grid.scss
+    │                   ├── _helpers.scss
+    │                   ├── _images.scss
+    │                   ├── _list-group.scss
+    │                   ├── _mixins.scss
+    │                   ├── _modal.scss
+    │                   ├── _nav.scss
+    │                   ├── _navbar.scss
+    │                   ├── _offcanvas.scss
+    │                   ├── _pagination.scss
+    │                   ├── _popover.scss
+    │                   ├── _progress.scss
+    │                   ├── _reboot.scss
+    │                   ├── _root.scss
+    │                   ├── _spinners.scss
+    │                   ├── _tables.scss
+    │                   ├── _toasts.scss
+    │                   ├── _tooltip.scss
+    │                   ├── _transitions.scss
+    │                   ├── _type.scss
+    │                   ├── _utilities.scss
+    │                   ├── _variables.scss
+    │                   ├── bootstrap-grid.scss
+    │                   ├── bootstrap-reboot.scss
+    │                   ├── bootstrap-utilities.scss
+    │                   ├── bootstrap.scss
+    │                   ├── forms/
+    │                   │   ├── _floating-labels.scss
+    │                   │   ├── _form-check.scss
+    │                   │   ├── _form-control.scss
+    │                   │   ├── _form-range.scss
+    │                   │   ├── _form-select.scss
+    │                   │   ├── _form-text.scss
+    │                   │   ├── _input-group.scss
+    │                   │   ├── _labels.scss
+    │                   │   └── _validation.scss
+    │                   ├── helpers/
+    │                   │   ├── _clearfix.scss
+    │                   │   ├── _colored-links.scss
+    │                   │   ├── _position.scss
+    │                   │   ├── _ratio.scss
+    │                   │   ├── _stretched-link.scss
+    │                   │   ├── _text-truncation.scss
+    │                   │   └── _visually-hidden.scss
+    │                   ├── mixins/
+    │                   │   ├── _alert.scss
+    │                   │   ├── _border-radius.scss
+    │                   │   ├── _box-shadow.scss
+    │                   │   ├── _breakpoints.scss
+    │                   │   ├── _buttons.scss
+    │                   │   ├── _caret.scss
+    │                   │   ├── _clearfix.scss
+    │                   │   ├── _color-scheme.scss
+    │                   │   ├── _container.scss
+    │                   │   ├── _deprecate.scss
+    │                   │   ├── _forms.scss
+    │                   │   ├── _gradients.scss
+    │                   │   ├── _grid.scss
+    │                   │   ├── _image.scss
+    │                   │   ├── _list-group.scss
+    │                   │   ├── _lists.scss
+    │                   │   ├── _pagination.scss
+    │                   │   ├── _reset-text.scss
+    │                   │   ├── _resize.scss
+    │                   │   ├── _table-variants.scss
+    │                   │   ├── _text-truncate.scss
+    │                   │   ├── _transition.scss
+    │                   │   ├── _utilities.scss
+    │                   │   └── _visually-hidden.scss
+    │                   ├── utilities/
+    │                   │   └── _api.scss
+    │                   └── vendor/
+    │                       └── _rfs.scss
+    └── Views/
+        ├── account.php
+        ├── annonce-form.php
+        ├── connexion.php
+        ├── detail-annonce.php
+        ├── favoris.php
+        ├── home.php
+        ├── inscription.php
+        ├── mes-annonces.php
+        ├── modifAnnonce.php
+        ├── mon-profil.php
+        ├── resultsearch.php
+        └── commons/
+            ├── footer.php
+            └── header.php
+
     
 ## Contributions
 
