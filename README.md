@@ -1,6 +1,7 @@
-<p align="center">
-  <img src="https://breroot.fr/projects/m2l-coin/logo.png">
-</p>
+
+<h1 align="center" color:"#FF6E14">
+  M2L-COIN
+</h1>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Version-1.1.2-vert?style=for-the-badge">
@@ -14,7 +15,6 @@
   <img src="https://img.shields.io/badge/Open%20Source-Oui-darkgreen?style=flat-square">
   <img src="https://img.shields.io/badge/Maintenu-Oui-lightblue?style=flat-square">
   <img src="https://img.shields.io/badge/Ecrit%20en-PHP-darkcyan?style=flat-square">
-  <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fbreroot%2Fm2L-coin&title=Visitors&edge_flat=false"/>
 </p>
 
 <hr>
@@ -75,55 +75,199 @@ Pour installer M2L-COIN dans votre environnement de développement local avec WA
 
 ## Arborescence : 
 
-M2L-COIN/
-├── README.md
-├── index.php
-├── leboncoin.sql
-├── .htaccess
-├── Assets/
-│   ├── css/
-│   │   └── style.css
-│   ├── img/
-│   │   └── annonces/
-│   ├── js/
-│   │   └── main.js
-│   ├── lib/
-│   │   ├── animate/
-│   │   ├── easing/
-│   │   ├── owlcarousel/
-│   │   ├── waypoints/
-│   │   └── wow/
-│   └── scss/
-│       ├── bootstrap.scss
-│       └── bootstrap/
-│           └── scss/
-├── Controllers/
-│   ├── AccountController.php
-│   ├── AnnonceController.php
-│   ├── FavorisController.php
-│   ├── LandingController.php
-│   ├── SearchController.php
-│   └── UpdateController.php
-├── Models/
-│   ├── Model.php
-│   └── algo.php
-├── Template/
-│   └── real-estate-html-template/
-│       ├── 404.html
-│       ├── about.html
-│       ├── contact.html
-│       ├── index.html
-│       ├── property-agent.html
-│       ├── property-list.html
-│       ├── property-type.html
-│       ├── testimonial.html
-│       ├── css/
-│       │   └── style.css
-│       ├── js/
-│       │   └── main.js
-│       └── lib/
-└── Data/
-    └── m2l-coin.db.sql
+
+      ├── README.md
+      ├── index.php
+      ├── leboncoin.sql
+      ├── .htaccess
+      ├── Assets/
+      │   ├── css/
+      │   │   └── style.css
+      │   ├── img/
+      │   │   └── annonces/
+      │   ├── js/
+      │   │   └── main.js
+      │   ├── lib/
+      │   │   ├── animate/
+      │   │   ├── easing/
+      │   │   ├── owlcarousel/
+      │   │   ├── waypoints/
+      │   │   └── wow/
+      │   └── scss/
+      │       ├── bootstrap.scss
+      │       └── bootstrap/
+      │           └── scss/
+      ├── Controllers/
+      │   ├── AccountController.php
+      │   ├── AnnonceController.php
+      │   ├── FavorisController.php
+      │   ├── LandingController.php
+      │   ├── SearchController.php
+      │   └── UpdateController.php
+      ├── Models/
+      │   ├── Model.php
+      │   └── algo.php
+      ├── Template/
+      │   └── real-estate-html-template/
+      │       ├── 404.html
+      │       ├── about.html
+      │       ├── contact.html
+      │       ├── index.html
+      │       ├── property-agent.html
+      │       ├── property-list.html
+      │       ├── property-type.html
+      │       ├── testimonial.html
+      │       ├── css/
+      │       │   └── style.css
+      │       ├── js/
+      │       │   └── main.js
+      │       └── lib/
+      └── Data/
+          └── m2l-coin.db.sql
+
+
+## Captures
+
+Quelques images du projet 
+
+1. Page d'accueil
+   
+    ![Étape 1](https://imgur.com/mj1WweW.jpg?raw=true)
+    
+2. Page d'Inscription
+   
+    ![Étape 3](https://imgur.com/vQmnU6v.jpg?raw=true)
+
+3. Page de Connexion
+   
+    ![Étape 2](https://imgur.com/6vSiLZh.jpg?raw=true)
+    
+4. Page de messagerie
+   
+    ![Étape 3](https://imgur.com/80qGCUi.jpg?raw=true)
+
+Autres à decouvrir...
+
+## Schema 
+
+1. MCD
+   
+    ![Étape 1](https://uml.planttext.com/plantuml/png/VLH1RiCW4BnRyXzGhbK-u5EYf3srLLKbvuh0AgN2O05s4zNzIszLtf6FTN6m0uxLYsN6ixF3i7XX7JMkBcMUvHae9zoHB9NIYW7voZD2xWGFwu88vJmqd_idKWrY3JNidHgFL4OS2i9rlPFWrnmiCw9oGgk2E3XqnTMxTZefuzJ1yaFN3acY13HKLdds7HbQ8MElZRXQ6f2HAIbs86LiAzPve0tMs44bh4SQWc-TaC9YYzeCtp26y1uhFcf6EohkCSWopM4DLRB5Yp1Fq5Zc2Qob-x0zmIqe3d7hLs0WcWYw2AwqSgXm3PU3z3JW6moow9BraQRDjXRCaZ5TApSauR6HU8tGCotJ8zw0JDRt9HKfyaAj_TI69s1ejpBG9RL6N_-vkvxGTcHAwN8qSZ26A3UO9jmwSo01fq-bEofvUbJCUmJ-HYV6iRyORJkVjsqqbWMPKL8hcDrmaW516keHUS7E9y0CbBqjkcGGs9MspbChQf3PJqfWzeMziZYVoFddbXUVUU22QlGHwPEw4tm3vzywiFkBDEMN-giyw8wOaL_cNqoNMPujSEAxdz0V.jpg?raw=true)
+    
+2. MLD
+   
+    ![Étape 3](https://imgur.com/fgHrdr8.jpg?raw=true)
+
+3. MPD SQL
+   
+    ``` sql
+      -- Users table
+      
+      CREATE TABLE Users (
+          idU INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+          nom VARCHAR(100) NOT NULL,
+          prenom VARCHAR(100) NOT NULL,
+          adresseEmail VARCHAR(100) NOT NULL,
+          telephone VARCHAR(10) NOT NULL,
+          mdp VARCHAR(500) NOT NULL,
+          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+          updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+          CONSTRAINT UC_Users_Email UNIQUE (adresseEmail)
+      ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+      -- Annonce table
+      
+      CREATE TABLE Annonce (
+          idAnnonce INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+          titre VARCHAR(200) NOT NULL,
+          prix DOUBLE NOT NULL,
+          description TEXT NOT NULL,
+          photo VARCHAR(500) NOT NULL,
+          dateAjout TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+          idCategorie INT UNSIGNED NOT NULL,
+          codeLocalisation VARCHAR(3) NOT NULL,
+          idUser INT UNSIGNED NOT NULL,
+          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+          updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+          CONSTRAINT FK_Annonce_Categorie FOREIGN KEY (idCategorie)
+              REFERENCES Categorie(idCategorie) ON DELETE CASCADE,
+          CONSTRAINT FK_Annonce_Localisation FOREIGN KEY (codeLocalisation)
+              REFERENCES Localisation(codeDep) ON DELETE CASCADE,
+          CONSTRAINT FK_Annonce_User FOREIGN KEY (idUser)
+              REFERENCES Users(idU) ON DELETE CASCADE,
+          INDEX IDX_Annonce_Categorie (idCategorie),
+          INDEX IDX_Annonce_Localisation (codeLocalisation),
+          INDEX IDX_Annonce_User (idUser)
+      ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+      -- Categorie table
+      
+      CREATE TABLE Categorie (
+          idCategorie INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+          libelle VARCHAR(50) NOT NULL,
+          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+          updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+      ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+      -- Favoris table
+      
+      CREATE TABLE Favoris (
+          idFavoris INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+          idUtilisateur INT UNSIGNED NOT NULL,
+          idA INT UNSIGNED NOT NULL,
+          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+          updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+          CONSTRAINT FK_Favoris_User FOREIGN KEY (idUtilisateur)
+              REFERENCES Users(idU) ON DELETE CASCADE,
+          CONSTRAINT FK_Favoris_Annonce FOREIGN KEY (idA)
+              REFERENCES Annonce(idAnnonce) ON DELETE CASCADE,
+          INDEX IDX_Favoris_User (idUtilisateur),
+          INDEX IDX_Favoris_Annonce (idA)
+      ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+      -- Localisation table
+      
+      CREATE TABLE Localisation (
+          codeDep VARCHAR(3) PRIMARY KEY,
+          dep VARCHAR(23) NOT NULL,
+          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+          updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+      ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+      -- Message table
+      
+      CREATE TABLE Message (
+          id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+          idsender INT UNSIGNED NOT NULL,
+          idReceiver INT UNSIGNED NOT NULL,
+          Content TEXT NOT NULL,
+          idAnnonce INT UNSIGNED NOT NULL,
+          deliveredTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+          updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+          CONSTRAINT FK_Message_Sender FOREIGN KEY (idsender)
+              REFERENCES UserAccount(idUser) ON DELETE CASCADE,
+          CONSTRAINT FK_Message_Receiver FOREIGN KEY (idReceiver)
+              REFERENCES UserAccount(idUser) ON DELETE CASCADE,
+          CONSTRAINT FK_Message_Annonce FOREIGN KEY (idAnnonce)
+              REFERENCES Annonce(idAnnonce) ON DELETE CASCADE,
+          INDEX IDX_Message_Sender (idsender),
+          INDEX IDX_Message_Receiver (idReceiver),
+          INDEX IDX_Message_Annonce (idAnnonce)
+      ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+      -- UserAccount table
+      CREATE TABLE UserAccount (
+          idUser INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+          userName VARCHAR(50) NOT NULL,
+          Tel VARCHAR(10) NOT NULL,
+          Email VARCHAR(50) NOT NULL,
+          Password VARCHAR(100) NOT NULL,
+          AccountCreationDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+          updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+          CONSTRAINT UC_UserAccount_Email UNIQUE (Email)
+      ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
     
 ## Contributions
 
