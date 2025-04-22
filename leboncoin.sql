@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : lun. 27 mars 2023 à 08:11
--- Version du serveur : 5.7.36
--- Version de PHP : 8.1.0
+-- Généré le : mar. 22 avr. 2025 à 19:53
+-- Version du serveur : 8.0.31
+-- Version de PHP : 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `leboncoin`
+-- Base de données : `m2l-coin`
 --
 
 -- --------------------------------------------------------
@@ -29,20 +29,20 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `annonce`;
 CREATE TABLE IF NOT EXISTS `annonce` (
-  `idAnnonce` int(11) NOT NULL AUTO_INCREMENT,
+  `idAnnonce` int NOT NULL AUTO_INCREMENT,
   `titre` varchar(200) NOT NULL,
   `prix` double NOT NULL,
   `description` text NOT NULL,
   `photo` varchar(500) NOT NULL,
   `dateAjout` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `idCategorie` int(11) NOT NULL,
+  `idCategorie` int NOT NULL,
   `codeLocalisation` varchar(3) NOT NULL,
-  `idUser` int(11) NOT NULL,
+  `idUser` int NOT NULL,
   PRIMARY KEY (`idAnnonce`),
   KEY `FK_localisation_annonce` (`codeLocalisation`),
   KEY `FK_cat_annonce` (`idCategorie`),
   KEY `fk_user_annonce` (`idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `annonce`
@@ -50,9 +50,10 @@ CREATE TABLE IF NOT EXISTS `annonce` (
 
 INSERT INTO `annonce` (`idAnnonce`, `titre`, `prix`, `description`, `photo`, `dateAjout`, `idCategorie`, `codeLocalisation`, `idUser`) VALUES
 (4, 'Maillot du PSG', 25, 'Test', 'img/annonce/Maillot du PSG.png', '2023-03-21 12:42:09', 7, '15', 1),
-(5, 'Livre Naruto', 34, 'Ceci est un livre du mangas Naruto', 'img/annonce/Livre Naruto.png', '2023-03-21 12:57:18', 5, '69', 1),
-(6, 'Livre Naruto', 34, 'Ceci est un livre du mangas Naruto', 'img/annonce/Livre Naruto.png', '2023-03-21 12:58:07', 5, '69', 1),
-(7, 'Samsung S20', 300, 'Ceci est un t&eacute;l&eacute;phone de marque Samsung.', 'img/annonce/Samsung S20.png', '2023-03-25 22:45:45', 8, '94', 5);
+(5, 'Livre Naruto', 50, 'Ceci est un livre du mangas Naruto.', 'img/annonce/Livre Naruto.png', '2023-03-21 12:57:18', 5, '59', 1),
+(7, 'Samsung S20', 300, 'Ceci est un t&eacute;l&eacute;phone de marque Samsung.', 'img/annonce/Samsung S20.png', '2023-03-25 22:45:45', 8, '94', 5),
+(8, 'iPhone 12', 650, 'Ceci est un t&eacute;l&eacute;phone', 'img/annonce/iPhone 12.png', '2023-03-30 14:33:29', 7, '92', 1),
+(9, 'PC pas cher', 199, 'Contactez moi pour plus d&#039;info', 'img/annonce/PC pas cher.png', '2025-04-22 18:02:57', 8, '78', 6);
 
 -- --------------------------------------------------------
 
@@ -62,10 +63,10 @@ INSERT INTO `annonce` (`idAnnonce`, `titre`, `prix`, `description`, `photo`, `da
 
 DROP TABLE IF EXISTS `categorie`;
 CREATE TABLE IF NOT EXISTS `categorie` (
-  `idCategorie` int(11) NOT NULL AUTO_INCREMENT,
+  `idCategorie` int NOT NULL AUTO_INCREMENT,
   `libelle` varchar(50) NOT NULL,
   PRIMARY KEY (`idCategorie`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `categorie`
@@ -84,16 +85,50 @@ INSERT INTO `categorie` (`idCategorie`, `libelle`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `conversation`
+--
+
+DROP TABLE IF EXISTS `conversation`;
+CREATE TABLE IF NOT EXISTS `conversation` (
+  `idConversation` int NOT NULL AUTO_INCREMENT,
+  `idAnnonce` int NOT NULL,
+  `idQ` int NOT NULL,
+  `idR` int NOT NULL,
+  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`idConversation`),
+  KEY `fk_ann_conv` (`idAnnonce`),
+  KEY `fk_utilQ_conv` (`idQ`),
+  KEY `fk_utilR_conv` (`idR`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+
+--
+-- Déchargement des données de la table `conversation`
+--
+
+INSERT INTO `conversation` (`idConversation`, `idAnnonce`, `idQ`, `idR`, `createdAt`) VALUES
+(1, 7, 1, 5, '2023-05-27 15:09:03'),
+(2, 7, 6, 5, '2025-04-22 15:04:15');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `favoris`
 --
 
 DROP TABLE IF EXISTS `favoris`;
 CREATE TABLE IF NOT EXISTS `favoris` (
-  `idFavoris` int(5) NOT NULL AUTO_INCREMENT,
-  `idUtilisateur` int(5) NOT NULL,
-  `idA` int(5) NOT NULL,
+  `idFavoris` int NOT NULL AUTO_INCREMENT,
+  `idUtilisateur` int NOT NULL,
+  `idA` int NOT NULL,
   PRIMARY KEY (`idFavoris`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb3;
+
+--
+-- Déchargement des données de la table `favoris`
+--
+
+INSERT INTO `favoris` (`idFavoris`, `idUtilisateur`, `idA`) VALUES
+(11, 1, 4);
 
 -- --------------------------------------------------------
 
@@ -106,7 +141,7 @@ CREATE TABLE IF NOT EXISTS `localisation` (
   `codeDep` varchar(3) NOT NULL,
   `dep` varchar(23) NOT NULL,
   PRIMARY KEY (`codeDep`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `localisation`
@@ -222,45 +257,23 @@ INSERT INTO `localisation` (`codeDep`, `dep`) VALUES
 
 DROP TABLE IF EXISTS `message`;
 CREATE TABLE IF NOT EXISTS `message` (
-  `idsender` int(11) NOT NULL,
-  `idReceiver` int(11) NOT NULL,
-  `Content` text NOT NULL,
-  `idAnnonce` int(11) NOT NULL,
-  `deliveredTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  KEY `fk_messageUser` (`idsender`),
-  KEY `fk_messageReceiver` (`idReceiver`),
-  KEY `fk_annonce` (`idAnnonce`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
+  `idM` int NOT NULL AUTO_INCREMENT,
+  `idSender` int NOT NULL,
+  `idReceiver` int NOT NULL,
+  `idC` int NOT NULL,
+  `contenu` text NOT NULL,
+  `dateEnvoi` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`idM`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 
 --
--- Structure de la table `useraccount`
+-- Déchargement des données de la table `message`
 --
 
-DROP TABLE IF EXISTS `useraccount`;
-CREATE TABLE IF NOT EXISTS `useraccount` (
-  `idUser` int(11) NOT NULL AUTO_INCREMENT,
-  `userName` varchar(50) NOT NULL,
-  `Tel` varchar(10) NOT NULL,
-  `Email` varchar(50) NOT NULL,
-  `Password` varchar(100) NOT NULL,
-  `AccountCreationDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`idUser`),
-  UNIQUE KEY `Email` (`Email`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `useraccount`
---
-
-INSERT INTO `useraccount` (`idUser`, `userName`, `Tel`, `Email`, `Password`, `AccountCreationDate`) VALUES
-(1, 'alexis', '0665879541', 'alexis@leboncoin.com', 'powerisbetter', '2022-11-22 18:01:58'),
-(3, 'Mohamed', '0665879541', 'mohamed@leboncoin.com', 'nani?', '2022-11-22 19:08:20'),
-(4, 'joel', '0123456789', 'joel@ndjate.fr', 'ilovemakima', '2022-11-26 14:17:35'),
-(6, 'hamid', '0987654321', 'hamid@leboncoin.fr', 'test', '2022-11-26 14:21:10'),
-(7, 'sanctifie', '6666666666', 'canctifie@bre.com', 'lol', '2022-11-26 14:21:10'),
-(8, 'test', '0102030405', 'test@gmail.com', 'Azerty123:', '2023-03-14 11:57:40');
+INSERT INTO `message` (`idM`, `idSender`, `idReceiver`, `idC`, `contenu`, `dateEnvoi`) VALUES
+(1, 1, 5, 1, 'Bonjour', '2023-05-27 15:09:03'),
+(2, 5, 1, 1, 'Oui bonjour !', '2023-06-10 21:24:06'),
+(3, 6, 5, 2, 'bonjour', '2025-04-22 15:04:15');
 
 -- --------------------------------------------------------
 
@@ -270,7 +283,7 @@ INSERT INTO `useraccount` (`idUser`, `userName`, `Tel`, `Email`, `Password`, `Ac
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
-  `idU` int(5) NOT NULL AUTO_INCREMENT,
+  `idU` int NOT NULL AUTO_INCREMENT,
   `nom` varchar(100) NOT NULL,
   `prenom` varchar(100) NOT NULL,
   `adresseEmail` varchar(100) NOT NULL,
@@ -278,15 +291,17 @@ CREATE TABLE IF NOT EXISTS `users` (
   `mdp` varchar(500) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`idU`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`idU`, `nom`, `prenom`, `adresseEmail`, `telephone`, `mdp`, `created_at`) VALUES
-(1, 'OKETOKOUN', 'Hamid', 'hamid@leboncoin.fr', '0930042543', 'a65ec3cef8aebc6b4e73c500a92d45ce', '2023-03-16 14:25:32'),
-(5, 'DUPONT', 'Antoine', 'antoinedupont@yahoo.fr', '0702030405', 'a65ec3cef8aebc6b4e73c500a92d45ce', '2023-03-17 09:44:18');
+(1, 'OKETOKOUN', 'Hamid', 'hamid@leboncoin.fr', '0630042543', 'a65ec3cef8aebc6b4e73c500a92d45ce', '2023-03-16 14:25:32'),
+(5, 'DUPONT', 'Antoine', 'antoinedupont@outlook.fr', '0702030405', '9d21bfc41c05ebbc779000c456c1097c', '2023-03-17 09:44:18'),
+(6, 'admin', 'Karim', 'georgesdebre@breroot.fr', '0605677668', '26ee7ac1d3cbfb48b50bea529e57e3a4', '2025-04-22 15:03:53'),
+(7, 'admin', 'breroot', 'adminbreroot@m2lcoin.fr', '0605677668', '26ee7ac1d3cbfb48b50bea529e57e3a4', '2025-04-22 15:06:00');
 
 --
 -- Contraintes pour les tables déchargées
@@ -301,12 +316,12 @@ ALTER TABLE `annonce`
   ADD CONSTRAINT `fk_user_annonce` FOREIGN KEY (`idUser`) REFERENCES `users` (`idU`);
 
 --
--- Contraintes pour la table `message`
+-- Contraintes pour la table `conversation`
 --
-ALTER TABLE `message`
-  ADD CONSTRAINT `fk_annonce` FOREIGN KEY (`idAnnonce`) REFERENCES `annonce` (`idAnnonce`) ON DELETE CASCADE,
-  ADD CONSTRAINT `fk_messageReceiver` FOREIGN KEY (`idReceiver`) REFERENCES `useraccount` (`idUser`) ON DELETE CASCADE,
-  ADD CONSTRAINT `fk_messageUser` FOREIGN KEY (`idsender`) REFERENCES `useraccount` (`idUser`) ON DELETE CASCADE;
+ALTER TABLE `conversation`
+  ADD CONSTRAINT `fk_ann_conv` FOREIGN KEY (`idAnnonce`) REFERENCES `annonce` (`idAnnonce`),
+  ADD CONSTRAINT `fk_utilQ_conv` FOREIGN KEY (`idQ`) REFERENCES `users` (`idU`),
+  ADD CONSTRAINT `fk_utilR_conv` FOREIGN KEY (`idR`) REFERENCES `users` (`idU`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
