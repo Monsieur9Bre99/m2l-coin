@@ -79,3 +79,13 @@
     
 })(jQuery);
 
+// user consent 
+document.getElementById('accept-cookies').onclick = function() {
+    document.cookie = 'cookies_accepted=true; path=/; max-age=' + 60*60*24*30; // Expires in 30 days
+    document.getElementById('cookie-banner').style.display = 'none';
+};
+
+document.getElementById('decline-cookies').onclick = function() {
+    document.cookie = 'cookies_accepted=false; path=/; max-age=' + 60*60*24*30; // Expires in 30 days
+    document.getElementById('cookie-banner').style.display = 'none';
+};
